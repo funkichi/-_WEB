@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-
+###メインコード
 st.markdown("<h1 style='text-align: center;'>病院検索便利君_WEB</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>☆徳島県の小児科をを検索できるアプリです☆</p>", unsafe_allow_html=True)
 
