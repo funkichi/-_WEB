@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-st.markdown("<h1 style='text-align: center;'>外観検査機便利君</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>病院検索便利君_WEB</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>☆徳島県の小児科をを検索できるアプリです☆</p>", unsafe_allow_html=True)
 
 image = Image.open('Material/test_1.png')
@@ -22,5 +22,5 @@ if st.sidebar.button("検索"):
         column_name_1 = ["医療機関名", "診療時間_午前", "診療時間_午後"]
         selected_row = df[(df["市町村"] == selected_location) & (df[selected_week] == 1)]
         selected_row_html = selected_row[column_name_1].to_html()
-        selected_row_html = selected_row_html.replace('<table','<table style="font-size:20px;"')
+        selected_row_html = selected_row_html.replace('<table','<table style="font-size:18px;"')
         st.write(selected_row_html, unsafe_allow_html=True)
