@@ -22,3 +22,6 @@ if st.sidebar.button("検索"):
         column_name_1 = ["医療機関名", "診療時間_午前", "診療時間_午後"]
         selected_row = df[(df["市町村"] == selected_location) & (df[selected_week] == 1)]
         st.write(selected_row[column_name_1])
+
+map = df["MAP"]
+st.sidebar.write(f"[地図]({map[1]})")
