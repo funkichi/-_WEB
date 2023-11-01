@@ -44,4 +44,4 @@ with st.form(key='my_form'):
                 st.table(selected_row.loc[selected_row_index])
 
 map = df["MAP"]
-st.sidebar.write(f"[画像保管場所]({map[0]})")
+st.sidebar.write(f"[地図]({map[0]})")
