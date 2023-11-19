@@ -3,13 +3,28 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-#タイトルの表示をセンタリングするためにhtmlで記述
-st.markdown("<h1 style='text-align: center; color: lightpink; '>🏥病院検索便利君🏥</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>☆徳島の小児科を検索できるアプリです☆</p>", unsafe_allow_html=True)
+#画像サイズを変数に代入
+size_logo = (600, 600)
+size_logo2 = (400, 400)
+size_city = (160, 160)
+size_date = (192, 192)
+size_option = (160, 160)
 
-#pillow(PIL)で画像を挿入してオプションでcaptionを追加
-image = Image.open('Material/test_1.png')
-st.image(image, caption='早めの受診をおすすめします')
+#画像ファイルを読み込んで.thumbnailでサイズを指定
+image_logo = Image.open('Material/logo.png')
+image_logo.thumbnail(size_logo)
+image_logo2 = Image.open('Material/logo2.png')
+image_logo2.thumbnail(size_logo2)
+image_city = Image.open('Material/city.png')
+image_city.thumbnail(size_city)
+image_date = Image.open('Material/date.png')
+image_date.thumbnail(size_date)
+image_option = Image.open('Material/option.png')
+image_option.thumbnail(size_option)
+
+#()内の変数で表示する画像を指定
+st.image(image_logo2)
+st.image(image_logo)
 
 #3列改行
 for i in range(3):
@@ -18,11 +33,11 @@ for i in range(3):
 #pandasでcsvファイルを読み込んでセレクトボックスを配置する
 df = pd.read_csv('DataBase/徳島県.csv')
 Location = list(df['市町村'].drop_duplicates())
-st.markdown("<h5 style='text-align: left; color: salmon;'>市町村を選択してください</h5>", unsafe_allow_html=True)
+st.image(image_city)
 selected_location = st.selectbox("", Location, label_visibility="collapsed")
-st.markdown("<h5 style='text-align: left; color: darkturquoise;'>受診希望日を選択してください</h5>", unsafe_allow_html=True)
+st.image(image_date)
 selected_week = st.selectbox('', ['月', '火', '水', '木', '金', '土', '日', '祝日'], label_visibility="collapsed")
-st.markdown("<h5 style='text-align: left; color: deepskyblue;'>オプションを選択してください</h5>", unsafe_allow_html=True)
+st.image(image_option)
 selected_option = st.selectbox('', ["選択なし", "オンライン診療", "夜間診療"], label_visibility="collapsed")
 
 #with内で使用する変数に事前に代入しておく(検索結果の詳細に表示したいカラム名を指定)
