@@ -1,14 +1,15 @@
-
 import streamlit as st
 import pandas as pd
 from PIL import Image
+import base64
+import io
 
 #画像サイズを変数に代入
 size_logo = (600, 600)
 size_logo2 = (400, 400)
 size_city = (160, 160)
-size_date = (192, 192)
-size_option = (160, 160)
+size_date = (200, 200)
+size_option = (180, 180)
 
 #画像ファイルを読み込んで.thumbnailでサイズを指定
 image_logo = Image.open('Material/logo.png')
@@ -22,9 +23,24 @@ image_date.thumbnail(size_date)
 image_option = Image.open('Material/option.png')
 image_option.thumbnail(size_option)
 
-#()内の変数で表示する画像を指定
-st.image(image_logo2)
-st.image(image_logo)
+#画像を保存
+image_logo2.save("Material/logo2.png")
+image_logo.save("Material/logo.png")
+
+#画像をバイト列として読み込みbase64エンコードする(streamlitではローカル画像を直接HTMLタグで参照できないため)
+def get_image_base64(image):
+    buffered = io.BytesIO()
+    image.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    return img_str
+
+#base64エンコードされた文字列を取得
+img_str_logo2 = get_image_base64(image_logo2)
+img_str_logo = get_image_base64(image_logo)
+
+#HTMLで画像を表示する
+st.markdown(f'<p style="text-align: center;"><img src="data:image/png;base64,{img_str_logo2}"></p>', unsafe_allow_html=True)
+st.markdown(f'<p style="text-align: center;"><img src="data:image/png;base64,{img_str_logo}"></p>', unsafe_allow_html=True)
 
 #3列改行
 for i in range(3):
