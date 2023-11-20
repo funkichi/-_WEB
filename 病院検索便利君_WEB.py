@@ -11,7 +11,7 @@ size_city = (160, 160)
 size_date = (200, 200)
 size_option = (180, 180)
 
-#画像ファイルを読み込んで.thumbnailでサイズを指定
+#画像ファイルを読み込んでthumbnailでサイズを指定
 image_logo = Image.open('Material/logo.png')
 image_logo.thumbnail(size_logo)
 image_logo2 = Image.open('Material/logo2.png')
