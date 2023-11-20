@@ -5,8 +5,8 @@ import base64
 import io
 
 #画像サイズを変数に代入
-size_logo = (600, 600)
-size_logo2 = (400, 400)
+size_logo = (400, 400)
+size_logo2 = (300, 300)
 size_city = (160, 160)
 size_date = (200, 200)
 size_option = (180, 180)
